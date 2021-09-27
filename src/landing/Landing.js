@@ -126,7 +126,7 @@ function Landing(){
                 </Grid>
             </Box>
             <Box>
-                <img height="100%" src={mendozaBkg} />
+                <img height="100%" src={mendozaBkg} alt="background de mendoza" />
             </Box>
             <Box textAlign="center">
                 <Grid container justify="center">
@@ -151,7 +151,7 @@ function Landing(){
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={4}>
                         <Box height="100%">
-                            <img src={logoVistalba} height="120px" />
+                            <img src={logoVistalba} height="120px" alt="logo vistalba"/>
                         </Box>
                     </Grid>
                 </Grid>
@@ -211,7 +211,7 @@ function Landing(){
             <Box>
                 <div class="mapouter">
                     <div class="gmap_canvas">
-                        <iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=amerian%20hotel,%20mendoza&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>                        
+                        <iframe title="google maps" width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=amerian%20hotel,%20mendoza&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>                        
                     </div>
                 </div>
             </Box>

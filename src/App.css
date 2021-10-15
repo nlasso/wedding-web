@@ -13,6 +13,37 @@
   }
 }
 
+@font-face {
+  font-family: 'ProximaNova';
+  src: local("ProximaNova"), url('./resources/fonts/ProximaNova/ProximaNova-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'ProximaNova';
+  src: local("ProximaNova"), url('./resources/fonts/ProximaNova/ProximaNova-Extrabld.ttf') format('truetype');
+  font-weight: 800;
+}
+@font-face {
+  font-family: 'ProximaNova';
+  src: local("ProximaNova"), url('./resources/fonts/ProximaNova/ProximaNova-Semibold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'ProximaNova';
+  src: local("ProximaNova"), url('./resources/fonts/ProximaNova/ProximaNova-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'ProximaNova';
+  src: local("ProximaNova"), url('./resources/fonts/ProximaNova/ProximaNova-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'ProximaNova';
+  src: local("ProximaNova"), url('./resources/fonts/ProximaNova/ProximaNova-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
 .mapouter{position:relative;text-align:right;height:500px;width:100%;}
 .gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}
 
@@ -29,6 +60,14 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.MuiMobileStepper-dot.MuiMobileStepper-dotActive{
+  background-color: white !important;
+}
+
+.MuiMobileStepper-dot{
+  background-color: rgba(0, 0, 0, 0.26) !important;
 }
 
 @keyframes App-logo-spin {

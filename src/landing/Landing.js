@@ -141,7 +141,7 @@ function Landing(props) {
                     <Button variant="text" className={classes.button} onClick={() => setOpenInvitation(true)}>Ver invitación</Button>
                 </Box>
             }
-            <Box style={{background: `url(${vistalbaBkg}) no-repeat`}}>
+            <Box style={{background: `url(${vistalbaBkg}) no-repeat 100%`}}>
                 <Box className={classes.sectionOneContainer}>
                     <Grid container justifyContent={isMobile ? "center" : "flex-start"}>
                         <Grid item xs={11} sm={11} md={6} lg={4}>

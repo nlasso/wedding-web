@@ -46,7 +46,7 @@ function Invitee(props) {
     useEffect(() => {
         setInvitee(location.state?.invitee)
         setActiveInvitee(location.state?.invitee)
-        
+        console.log(location.state?.invitee)
         var cAmount = Number(isNaN(location.state?.invitee?.companionsAmount) ? 0 : location.state?.invitee?.companionsAmount)
         setCompanionsAmount(cAmount)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,23 +66,25 @@ function Invitee(props) {
         })
     }
 
-    const handleNext = () => {
+    const handleNext = (isConfirm) => {
         // If user has companions to invite
-        if(invitee.companionsAmount > 0){  
+        if(companionsAmount > 0){  
             
             // If it´s the last companion and clicked next then is a submit.
-            if(activeStep === invitee.companionsAmount) {
+            if(activeStep === companionsAmount || isConfirm) {
                 // Submit - update user
                 const inviteeCopy = invitee
-                if(invitee.companions?.length === activeStep) {
+                if(invitee.companions?.length >= activeStep) {
                     inviteeCopy.companions[activeStep - 1] = activeInvitee
                 } else {
                     
                     if(!inviteeCopy.companions) {
                         inviteeCopy.companions = []
                     }
-
-                    inviteeCopy.companions.push(activeInvitee)
+                    //TODO: Validar que activeInvitee no tenga nombre vacio
+                    if(activeInvitee.name && activeInvitee.name.length > 0 && activeInvitee.email && activeInvitee.email.length > 0) {
+                        inviteeCopy.companions.push(activeInvitee)
+                    }
                 }
                 
                 setInvitee(inviteeCopy)
@@ -92,15 +94,20 @@ function Invitee(props) {
                 return 
             } else {
                 //If it´s not a submit.
-                var companionIndex = activeStep
+                var companionIndex = activeStep 
                 
                 var inviteeCopy = invitee
                 if (activeStep > 0) {
                     // Need to save the companion into invitee.companion array.
-                    if (invitee.companions?.length > companionIndex) {
+                    if (invitee.companions?.length >= companionIndex) {
                         // Then there´s a companion set and it´s needed to update the companion
-                        inviteeCopy.companions[companionIndex] = activeInvitee
+                        inviteeCopy.companions[activeStep - 1] = activeInvitee
                     } else {
+                        
+                        if(inviteeCopy.companions === undefined) {
+                            inviteeCopy.companions = []
+                        }
+
                         inviteeCopy.companions.push(activeInvitee)
                     }
 
@@ -116,7 +123,7 @@ function Invitee(props) {
                     hotelAddress: activeInvitee.hotelAddress
                 }
 
-                if(invitee.companions?.length <= activeStep - 1) {
+                if(invitee.companions?.length > companionIndex) {
                     // Companion is loaded. Might be an edition so load it into active invitee.
                     companion = invitee.companions[companionIndex]
                 }
@@ -459,14 +466,20 @@ function Invitee(props) {
                                         </Button>
                                     </Box>
                                 }
+                                <Box alignSelf="right" mr={1}>
+                                    <Button
+                                        className={classes.buttonContained}
+                                        disabled={activeInvitee?.email === undefined || companionsAmount === 0 || activeStep >= companionsAmount }
+                                        variant="contained"
+                                        onClick={() => handleNext(false)}>Siguiente</Button>
+                                </Box>
                                 <Box alignSelf="right" >
                                     <LoadingButton
                                         loading={loading}
                                         className={classes.buttonContained}
                                         fullWidth
                                         variant="contained"
-                                        onClick={handleNext}
-                                        type="submit">{activeStep === (invitee?.companionsAmount > 0 ? invitee.companionsAmount : 0) ? 'Confirmar' : 'Siguiente'}</LoadingButton>
+                                        onClick={() => handleNext(true)}>Confirmar</LoadingButton>
                                 </Box>
                             </Box>
                             
@@ -480,7 +493,7 @@ function Invitee(props) {
                                 className={classes.buttonContained}
                                 fullWidth
                                 variant="contained"
-                                onClick={handleNext}
+                                onClick={() => handleNext(true)}
                                 type="submit">Confirmar</LoadingButton>
                         </Box>
                     }

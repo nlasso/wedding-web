@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, Grid, Typography, TextField, Button, useMediaQuery, Dialog } from '@mui/material'
+import { Box, Grid, Typography, TextField, Button, useMediaQuery, Dialog, Alert, Stack, Collapse } from '@mui/material'
 import { LoadingButton } from '@mui/lab'
 import { makeStyles, useTheme } from '@mui/styles'
 import { getDatabase, get, orderByChild, equalTo, ref, query } from 'firebase/database'
@@ -46,6 +46,7 @@ const useStyles = makeStyles({
 
 function Landing(props) {
     const db = getDatabase()
+    const [openAlert, setOpenAlert] = useState(false)
     const [email, setEmail] = useState();
     const [loading, setLoading] = useState(false)
     const theme = useTheme();
@@ -67,7 +68,14 @@ function Landing(props) {
     const getUser = async (e) => {
         e.preventDefault();
         setLoading(true)
-        let userByEmail = await query(ref(db, "users"), orderByChild("email"), equalTo(email))
+        setOpenAlert(false)
+        
+        if(!email) {
+            setLoading(false)
+            return
+        }
+
+        let userByEmail = await query(ref(db, "users"), orderByChild("email"), equalTo(email.trim()))
         get(userByEmail).then(snap => {
             let value = snap.val()
             let invitees = Object.keys(value)
@@ -78,10 +86,11 @@ function Landing(props) {
             }
         })
         .catch(e => {
+            setOpenAlert(true)
             console.log(e)
         })
         .finally(() => {
-            setLoading(true)
+            setLoading(false)
         })
         
     }
@@ -141,7 +150,7 @@ function Landing(props) {
                     <Button variant="text" className={classes.button} onClick={() => setOpenInvitation(true)}>Ver invitación</Button>
                 </Box>
             }
-            <Box style={{background: `url(${vistalbaBkg}) no-repeat 100%`}}>
+            <Box style={{background: `url(${vistalbaBkg}) no-repeat 100%`, backgroundSize: "cover"}}>
                 <Box className={classes.sectionOneContainer}>
                     <Grid container justifyContent={isMobile ? "center" : "flex-start"}>
                         <Grid item xs={11} sm={11} md={6} lg={4}>
@@ -192,6 +201,13 @@ function Landing(props) {
                                         variant="contained"
                                         type="submit">Confirmar</LoadingButton>
                             </form>
+                        </Box>
+                        <Box mb={2}>
+                            <Collapse in={openAlert}>
+                                <Stack spacing={2}>
+                                    <Alert severity="error">Ese mail no se encuentra cargado. Por favor hablá con Nico o Caro!</Alert>
+                                </Stack>
+                            </Collapse>
                         </Box>
                     </Grid>
                 </Grid>
@@ -292,6 +308,11 @@ function Landing(props) {
                 </div>
             </Box>
             <Box textAlign="center" py={10}>
+                <Box textAlign="center" p={2}>
+                    <Typography variant="h6">Sumá tus temas a la lista de la boda</Typography>
+                    <Typography variant="subtitle1">Esta lista es pública y podés sumar todos los temas que te gustaría que suenen en la boda! Pensá en temas bailables, no pongas a Lana del Rey que nos pinta el bajón!</Typography>
+                    <Button variant="contained">Ver Lista</Button>
+                </Box>
                 <Grid container justifyContent="center">
                     <Grid item xs={12} md={3}>
                         <Typography variant="body1">

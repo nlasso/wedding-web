@@ -3,7 +3,7 @@ import { Box, Grid, Typography, TextField, Button, useMediaQuery, Dialog, Alert,
 import { LoadingButton } from '@mui/lab'
 import { makeStyles, useTheme } from '@mui/styles'
 import { getDatabase, get, orderByChild, equalTo, ref, query } from 'firebase/database'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Link } from 'react-scroll'
 import weddingLogo from '../resources/wedding_logo.svg'
 import vistalbaBkg from '../resources/vistalba_bkg.svg'
@@ -15,6 +15,7 @@ import vistalba1 from '../resources/vistalba1.png'
 import vistalba2 from '../resources/vistalba2.png'
 import vistalba3 from '../resources/vistalba3.png'
 import Invitation from '../invitation/Invitation';
+import queryString from 'query-string'
 
 const useStyles = makeStyles({
     root: {
@@ -61,6 +62,7 @@ function Landing(props) {
     const [inviteePath, setInviteePath] = useState()
     const [openInvitation, setOpenInvitation] = useState(false)
     let history = useHistory();
+    let location = useLocation();
 
     useEffect(() => {
         let invitee = JSON.parse(localStorage.getItem("invitee"))
@@ -68,6 +70,12 @@ function Landing(props) {
             let path = localStorage.getItem("inviteePath")
             setInviteePath(path)
             setInvitationRedeemed(invitee)
+
+            let qs = location?.search
+            let params = queryString.parse(qs)
+            if(params.invitation) {
+                setOpenInvitation(true)
+            }
         }
     }, [])
 

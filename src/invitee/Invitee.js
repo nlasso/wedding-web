@@ -168,7 +168,7 @@ function Invitee(props) {
         set(ref(database, 'users/' + location.state?.inviteePath), inviteeParam).then(response => {
             localStorage.setItem("invitee", JSON.stringify(inviteeParam))
             localStorage.setItem("inviteePath", location.state?.inviteePath)
-            history.push("/")
+            history.push("/?invitation=true")
         }).catch(e => {
             console.log(e)
         }).finally(() => {
@@ -466,13 +466,16 @@ function Invitee(props) {
                                         </Button>
                                     </Box>
                                 }
-                                <Box alignSelf="right" mr={1}>
-                                    <Button
-                                        className={classes.buttonContained}
-                                        disabled={activeInvitee?.email === undefined || companionsAmount === 0 || activeStep >= companionsAmount }
-                                        variant="contained"
-                                        onClick={() => handleNext(false)}>Siguiente</Button>
-                                </Box>
+                                {
+                                    companionsAmount > 0 &&
+                                    <Box alignSelf="right" mr={1}>
+                                        <Button
+                                            className={classes.buttonContained}
+                                            disabled={activeInvitee?.email === undefined || companionsAmount === 0 || activeStep >= companionsAmount }
+                                            variant="contained"
+                                            onClick={() => handleNext(false)}>Siguiente</Button>
+                                    </Box>
+                                }
                                 <Box alignSelf="right" >
                                     <LoadingButton
                                         loading={loading}

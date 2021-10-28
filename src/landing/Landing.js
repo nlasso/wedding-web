@@ -7,7 +7,8 @@ import { useHistory } from 'react-router-dom'
 import { Link } from 'react-scroll'
 import weddingLogo from '../resources/wedding_logo.svg'
 import vistalbaBkg from '../resources/vistalba_bkg.svg'
-// import avatar from '../resources/avatar.svg'
+import avatar from '../resources/avatar.png'
+import spotifyLogo from '../resources/spotify_logo.png'
 import mendozaBkg from '../resources/mendoza_bkg.svg'
 import logoVistalba from '../resources/logo_bodega_vistalba.svg'
 import vistalba1 from '../resources/vistalba1.png'
@@ -41,6 +42,11 @@ const useStyles = makeStyles({
     },
     formItem: {
         backgroundColor: "white"
+    },
+    musicListButton: {
+        backgroundColor: "#B7004C !important",
+        color: "white",
+        fontWeight: "bold"
     }
 })
 
@@ -155,7 +161,7 @@ function Landing(props) {
                     <Grid container justifyContent={isMobile ? "center" : "flex-start"}>
                         <Grid item xs={11} sm={11} md={6} lg={4}>
                             <Box textAlign="center" className={classes.upperCard} ml={!isMobile ? 10 : 0} my={10} p={5}>
-                                {/* <img src={avatar} height="80px" width="80px" alt="avatar"/> */}
+                                <img src={avatar} height="100px" width="100px" alt="avatar"/>
                                 <Box py={2}>
                                     <Typography variant="h6">Somos Caro y Nico y... <br/> ¡Nos casamos!</Typography>
                                 </Box>
@@ -308,14 +314,14 @@ function Landing(props) {
                 </div>
             </Box>
             <Box textAlign="center" py={10}>
-                <Box textAlign="center" p={2}>
-                    <Typography variant="h6">Sumá tus temas a la lista de la boda</Typography>
-                    <Typography variant="subtitle1">Esta lista es pública y podés sumar todos los temas que te gustaría que suenen en la boda! Pensá en temas bailables, no pongas a Lana del Rey que nos pinta el bajón!</Typography>
-                    <Button variant="contained">Ver Lista</Button>
+                <Box textAlign="center" p={2} mb={5}>
+                    <Typography mb={2} variant="h6">Sumá tus temas a la lista de la boda</Typography>
+                    <Typography mb={2} variant="subtitle1">Esta lista es pública y podés sumar todos los temas que te gustaría que suenen en la boda! Pensá en temas bailables, no pongas a Lana del Rey que nos pinta el bajón!</Typography>
+                    <Button variant="contained" className={classes.musicListButton} onClick={() => window.open("https://open.spotify.com/playlist/4rhHJHyq9jePeNmo318G2y?si=df3f59fc54974a31", "_blank")}><img src={spotifyLogo} height="20px" width="20px" /> &nbsp; Ver Lista</Button>
                 </Box>
                 <Grid container justifyContent="center">
                     <Grid item xs={12} md={3}>
-                        <Typography variant="body1">
+                        <Typography mt={3} variant="body1">
                             Esperamos poder verte ahí ❤️
                         </Typography>
                         <Typography variant="body1">

@@ -70,13 +70,13 @@ function Landing(props) {
             let path = localStorage.getItem("inviteePath")
             setInviteePath(path)
             setInvitationRedeemed(invitee)
-
-            let qs = location?.search
-            let params = queryString.parse(qs)
+            
+            let params = queryString.parse(location?.search)
             if(params.invitation) {
                 setOpenInvitation(true)
             }
         }
+        // eslint-disable-next-line 
     }, [])
 
     const getUser = async (e) => {
@@ -325,7 +325,7 @@ function Landing(props) {
                 <Box textAlign="center" p={2} mb={5}>
                     <Typography mb={2} variant="h6">Sumá tus temas a la lista de la boda</Typography>
                     <Typography mb={2} variant="subtitle1">Esta lista es pública y podés sumar todos los temas que te gustaría que suenen en la boda! Pensá en temas bailables, no pongas a Lana del Rey que nos pinta el bajón!</Typography>
-                    <Button variant="contained" className={classes.musicListButton} onClick={() => window.open("https://open.spotify.com/playlist/4rhHJHyq9jePeNmo318G2y?si=df3f59fc54974a31", "_blank")}><img src={spotifyLogo} height="20px" width="20px" /> &nbsp; Ver Lista</Button>
+                    <Button variant="contained" className={classes.musicListButton} onClick={() => window.open("https://open.spotify.com/playlist/4rhHJHyq9jePeNmo318G2y?si=df3f59fc54974a31", "_blank")}><img src={spotifyLogo} height="20px" width="20px" alt="spotify logo" /> &nbsp; Ver Lista</Button>
                 </Box>
                 <Grid container justifyContent="center">
                     <Grid item xs={12} md={3}>

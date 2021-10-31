@@ -15,13 +15,18 @@ import vistalba1 from '../resources/vistalba1.png'
 import vistalba2 from '../resources/vistalba2.png'
 import vistalba3 from '../resources/vistalba3.png'
 import Invitation from '../invitation/Invitation';
+import logobrubank from '../resources/logobrubank.png'
+import wineTasting from '../resources/wineTasting.jpeg'
+import rafting from '../resources/rafting.jpg'
+import horseRiding from '../resources/horseRiding.jpg'
+import trekking from '../resources/trekking.jpg'
 import queryString from 'query-string'
 
 const useStyles = makeStyles({
     root: {
         backgroundColor: "#F5ECE8",
         minHeight: "100%",
-        fontFamily: 'Proxima Nova !important'
+        fontFamily: 'ProximaNova !important'
     },
     menuItem: {
         color: "#B7004C",
@@ -48,6 +53,34 @@ const useStyles = makeStyles({
         backgroundColor: "#B7004C !important",
         color: "white",
         fontWeight: "bold"
+    },
+    activityTitle: {
+        fontWeight: "800 !important",
+        fontSize: "30px !important",
+        fontFamily: "ProximaNova !important"
+    },
+    activitySubtitle: {
+        fontWeight: "500 !important",
+        fontSize: "15px !important",
+        fontFamily: "ProximaNova !important"
+    },
+    activityOverlay: {
+        position: "absolute",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        color: "white"
+    },
+    activityContainer: {
+        borderRadius: "15px !important",
+        position: "relative",
+        overflow: "hidden"
+    },
+    darkContainer: {
+        backgroundColor: "#0A0B0D",
+        color: "white"
     }
 })
 
@@ -192,7 +225,7 @@ function Landing(props) {
                     <Grid item xs={11} sm={8} md={4} lg={3}>
                         <Box textAlign="center" pt={2}>
                             <Typography variant="h6">Confirmá tu asistencia</Typography>
-                            <Typography variant="subtitle1">Ingresá tu dirección de mail</Typography>
+                            <Typography variant="subtitle1">Ingresá tu dirección de mail a continuación. Tenés tiempo para confirmarnos hasta el <b>30 de Noviembre de 2021</b>!</Typography>
                         </Box>
                         <Box pb={4} pt={2}>
                             <form onSubmit={getUser}>
@@ -324,21 +357,115 @@ function Landing(props) {
             <Box textAlign="center" py={10}>
                 <Box textAlign="center" p={2} mb={5}>
                     <Typography mb={2} variant="h6">Sumá tus temas a la lista de la boda</Typography>
-                    <Typography mb={2} variant="subtitle1">Esta lista es pública y podés sumar todos los temas que te gustaría que suenen en la boda! Pensá en temas bailables, no pongas a Lana del Rey que nos pinta el bajón!</Typography>
+                    <Typography mb={2} style={{fontWeight: "bold"}} variant="subtitle1">Esta lista es pública y podés sumar todos los temas que te gustaría que suenen en la boda! Pensá en temas bailables, no pongas a Lana del Rey que nos pinta el bajón!</Typography>
                     <Button variant="contained" className={classes.musicListButton} onClick={() => window.open("https://open.spotify.com/playlist/4rhHJHyq9jePeNmo318G2y?si=df3f59fc54974a31", "_blank")}><img src={spotifyLogo} height="20px" width="20px" alt="spotify logo" /> &nbsp; Ver Lista</Button>
                 </Box>
-                <Grid container justifyContent="center">
+            </Box>
+            <Box className={classes.darkContainer}>
+                <Box p={2} textAlign="center">
+                    <Typography variant="h6" className={classes.activityTitle}>Actividades</Typography>
+                    <Typography variant="subtitle1" mb={2}>Podés realizar actividades durante tu estadía en Mendoza! Para esto de dejamos algunas opciones y contactos para que puedas arreglar lo que más te guste!</Typography>
+                    <Button className={classes.buttonContained} variant="contained" onClick={() => window.open("https://drive.google.com/file/d/1U5kWRmpQwBx9X8lTBZXmVIVRoa_ukedQ/view", "_blank")}>Ver PDF</Button> 
+                </Box>
+                <Grid container>
                     <Grid item xs={12} md={3}>
-                        <Typography mt={3} variant="body1">
-                            Esperamos poder verte ahí ❤️
-                        </Typography>
-                        <Typography variant="body1">
-                            <b>Los queremos, Caro y Nico.</b>
-                        </Typography>
+                        <Box p={2}>
+                            <Box position="relative" className={classes.activityContainer}>
+                                <img src={wineTasting} width="100%" alt="degustaciones" />
+                                <Box  className={classes.activityOverlay} textAlign="center">
+                                    <Box p={3}>
+                                        <Typography variant="h6" className={classes.activityTitle}>Degustaciones</Typography>
+                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Agendá degustaciones y almuerzos de pasos</Typography>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </Box>    
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <Box p={2}>
+                            <Box position="relative" className={classes.activityContainer}>
+                                <img src={rafting} width="100%" alt="rafting" />
+                                <Box  className={classes.activityOverlay} textAlign="center">
+                                    <Box p={3}>
+                                        <Typography variant="h6" className={classes.activityTitle}>Rafting</Typography>
+                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Mendoza, verano, calor... porqué no?</Typography>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </Box>    
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <Box p={2}>
+                            <Box position="relative" className={classes.activityContainer}>
+                                <img src={horseRiding} width="100%" alt="cabalgatas" />
+                                <Box  className={classes.activityOverlay} textAlign="center">
+                                    <Box p={3}>
+                                        <Typography variant="h6" className={classes.activityTitle}>Cabalgatas</Typography>
+                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Cabalgatas por los andes</Typography>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </Box>    
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <Box p={2}>
+                            <Box position="relative" className={classes.activityContainer}>
+                                <img src={trekking} width="100%" alt="trekking"/>
+                                <Box  className={classes.activityOverlay} textAlign="center">
+                                    <Box p={3}>
+                                        <Typography variant="h6" className={classes.activityTitle}>Trekking</Typography>
+                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Trekking por los antes (pero si vas avisale a Nico también!)</Typography>
+                                    </Box>
+                                </Box>
+                            </Box>
+                        </Box>    
                     </Grid>
                 </Grid>
-                <Box textAlign="right" pt={5} px={2}>
-                    <Typography variant="caption">built by Nico with ❤️</Typography>
+            </Box>
+            <Box textAlign="center" py={10}>
+                <Box mb={6}>
+                    <Grid container justifyContent="center" alignContent="center">
+                        <Grid item xs={12} sm={8} md={8}>
+                            <Box textAlign="left" p={2} >
+                                <Typography variant="h6">Sobre regalos o presentes</Typography>
+                                <Typography variant="subtitle1">Ya encontrarnos en Mendoza nos llena de alegría. Para nosotros lo más importante es que puedan venir. De todas formas, sabemos que algunos se ponen insistentes con el tema, así que les dejamos nuestras cuentas bancarias si quisieran hacer un regalo de bodas o ayudarnos con la luna de miel!</Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                    <Grid container justifyContent="center" alignContent="center">
+                        <Grid item xs={12} sm={12} md={4} >
+                            <Box p={2}>
+                                <Typography variant="body1"><b>Nicolás Lasso</b></Typography>
+                                <Typography variant="body2">Alias: <b>nicolas.lasso</b></Typography>
+                                <Typography variant="body2">CBU: <b>1430001713000006760016</b></Typography>
+                                <Typography variant="body2">DNI: <b>35983653</b></Typography>
+                                <img src={logobrubank} alt="brubank logo" width="100px" />
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={4}>
+                            <Typography variant="body1"><b>Carolina Nunes</b></Typography>
+                            <Typography variant="body2">Alias: <b>carolinanunes</b></Typography>
+                            <Typography variant="body2">CBU: <b>1430001713002351010019</b></Typography>
+                            <Typography variant="body2">DNI: <b>35798506</b></Typography>
+                            <img src={logobrubank} alt="brubank logo" width="100px" />
+                        </Grid>
+                    </Grid>
+                </Box>
+                <Box>
+                    <Grid container justifyContent="center">
+                        <Grid item xs={12} md={3}>
+                            <img src={avatar} height="100px" width="100px" alt="avatar"/>
+                            <Typography mt={3} variant="body1">
+                                Esperamos poder verte ahí ❤️
+                            </Typography>
+                            <Typography variant="body1">
+                                <b>Los queremos, Caro y Nico.</b>
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Box textAlign="right" pt={5} px={2}>
+                        <Typography variant="caption">built by Nico with ❤️</Typography>
+                    </Box>
                 </Box>
             </Box>
             <Dialog fullScreen={isMobile} open={openInvitation} onClose={() => setOpenInvitation(false)} p={0}>

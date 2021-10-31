@@ -408,7 +408,7 @@ function Landing(props) {
                                 <Box  className={classes.activityOverlay} textAlign="center">
                                     <Box p={3}>
                                         <Typography variant="h6" className={classes.activityTitle}>Cabalgatas</Typography>
-                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Cabalgatas por los andes</Typography>
+                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Cabalgatas por los Andes</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -421,7 +421,7 @@ function Landing(props) {
                                 <Box  className={classes.activityOverlay} textAlign="center">
                                     <Box p={3}>
                                         <Typography variant="h6" className={classes.activityTitle}>Trekking</Typography>
-                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Trekking por los antes (pero si vas avisale a Nico también!)</Typography>
+                                        <Typography mb={2} variant="body1" className={classes.activitySubtitle}>Trekking por los Andes (pero si vas avisale a Nico también!)</Typography>
                                     </Box>
                                 </Box>
                             </Box>

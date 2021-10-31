@@ -496,6 +496,12 @@ function Invitee(props) {
                             <Box py={2}>
                                 <Typography variant="caption">(*) Los costos de estos servicios serán enviados a requerimiento.</Typography>
                             </Box>
+                            {
+                                companionsAmount > 0 &&
+                                <Box>
+                                    <Typography variant="body1"><b>Apretá "siguiente" para cargar a tu invitado/a!</b></Typography>
+                                </Box>
+                            }
                             <Box display="flex" my={2}>
                                 {
                                     activeStep > 0 && 

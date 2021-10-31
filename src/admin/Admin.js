@@ -143,6 +143,7 @@ function Admin() {
                                 <TableCell align="right">email</TableCell>
                                 <TableCell align="right">Acompañantes</TableCell>
                                 <TableCell align="right">Asiste?</TableCell>
+                                <TableCell align="right">PreBoda?</TableCell>
                                 <TableCell align="right">Edad</TableCell>
                                 <TableCell align="right">Teléfono</TableCell>
                                 <TableCell align="right">hotel</TableCell>
@@ -175,6 +176,7 @@ function Admin() {
                                 <TableCell align="right">{row?.email}</TableCell>
                                 <TableCell align="right">{row?.companionOf !== undefined ? row?.companionOf : (row?.companionsAmount ?? 0)}</TableCell>
                                 <TableCell align="right">{row?.asists ? (row?.asists === "true" ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />) : "Falta contestar"}</TableCell>
+                                <TableCell align="right">{row?.preWedding ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />}</TableCell>
                                 <TableCell align="right">{row?.age}</TableCell>
                                 <TableCell align="right">{row?.cellphone}</TableCell>
                                 <TableCell align="right">{row?.hotel}</TableCell>

@@ -280,7 +280,7 @@ function Landing(props) {
                             </Box>
                             <Typography variant="subtitle2">
                                 Nos encanta la idea de hacer algo distinto, nos encanta viajar y creemos 
-                                que es una gran oportunidad para encontrarnos en un otro lugar. Fuera de nuestro hogar.
+                                que es una gran oportunidad para encontrarnos en otro lugar. Fuera de nuestro hogar.
                                 <br />
                                 <br/>
                                 Así que decidimos mudar el casamiento a Mendoza!
@@ -316,11 +316,11 @@ function Landing(props) {
                         <Box p={4} textAlign="center">
                             <Typography variant="h6">Alojamiento y hoteles</Typography>
                             <Typography variant="body1">La idea es que <b>no manejes y te puedas relajar y disfrutar</b> del evento. Para esto habrá
-                            transfers que te pasarán a buscar por el hotel en el que te hospedes. <br/> <br/>
+                            transfers que te pasarán a buscar por el alojamiento en el que te hospedes. <br/> <br/>
                             Te dejamos una lista de los <b>hoteles que recomendamos por la zona</b> y cercanía a la bodega. 
                             <br/> <br/> 
                             <b>En caso de no querer</b> uno de estos hoteles, <b>te pedimos tratar de quedarte cerca de la zona de los mismos</b>. Podrás 
-                            indicar en que hotel, departamento, hostel o camping te quedás para que te busquen ahí también. </Typography>
+                            indicar en que hotel, departamento, hostel o campingthe  te quedás para que te busquen ahí también. </Typography>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={6} md={4}>

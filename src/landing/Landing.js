@@ -122,7 +122,7 @@ function Landing(props) {
             return
         }
 
-        let userByEmail = await query(ref(db, "users"), orderByChild("email"), equalTo(email.trim()))
+        let userByEmail = await query(ref(db, "users"), orderByChild("email"), equalTo(email.trim().toLowerCase()))
         get(userByEmail).then(snap => {
             let value = snap.val()
             let invitees = Object.keys(value)
@@ -161,28 +161,35 @@ function Landing(props) {
                             <Grid item>
                                 <Box px={2} pt={1}>
                                     <Link to='bodega' spy={true} smooth={true} style={{textDecoration: "none", cursor: "pointer"}}>
-                                        <Typography className={classes.menuItem} variant="body1">La Bodega</Typography>
+                                        <Typography className={classes.menuItem} variant="body1"><b>La Bodega</b></Typography>
                                     </Link>
                                 </Box>
                             </Grid>
                             <Grid item>
                                 <Box px={2} pt={1}>
                                     <Link to='hotels' spy={true} smooth={true} style={{textDecoration: "none", cursor: "pointer"}}>
-                                        <Typography className={classes.menuItem} variant="body1">Hoteles</Typography>
+                                        <Typography className={classes.menuItem} variant="body1"><b>Hoteles</b></Typography>
                                     </Link> 
                                 </Box>
                             </Grid>
                             <Grid item>
                                 <Box px={2} pt={1} >
                                     <Link to='rsvp' spy={true} smooth={true} style={{textDecoration: "none", cursor: "pointer"}}>
-                                        <Typography className={classes.menuItem} variant="body1">RSVP</Typography>
+                                        <Typography className={classes.menuItem} variant="body1"><b>RSVP</b></Typography>
                                     </Link>
                                 </Box>
                             </Grid>
                             <Grid item>
                                 <Box px={2} pt={1}>
                                     <Link to='map' spy={true} smooth={true} style={{textDecoration: "none", cursor: "pointer"}}>
-                                        <Typography className={classes.menuItem} variant="body1">Mapa</Typography>
+                                        <Typography className={classes.menuItem} variant="body1"><b>Mapa</b></Typography>
+                                    </Link>
+                                </Box>
+                            </Grid>
+                            <Grid item>
+                                <Box px={2} pt={1}>
+                                    <Link to='activities' spy={true} smooth={true} style={{textDecoration: "none", cursor: "pointer"}}>
+                                        <Typography className={classes.menuItem} variant="body1"><b>Actividades</b></Typography>
                                     </Link>
                                 </Box>
                             </Grid>
@@ -267,24 +274,24 @@ function Landing(props) {
                     <Grid item xs={12} sm={12} md={6} lg={4}>
                         <Box p={2} my={5}>
                             <Box py={2}>
-                                <Typography variant="body1">
-                                    Sobre la bodega
+                                <Typography variant="h6">
+                                    <b>Sobre la bodega</b>
                                 </Typography>
                             </Box>
                             <Typography variant="subtitle2">
                                 Nos encanta la idea de hacer algo distinto, nos encanta viajar y creemos 
-                                que es una gran oportunidad para encontrarnos en un lugar distinto. Fuera de nuestro hogar.
+                                que es una gran oportunidad para encontrarnos en un otro lugar. Fuera de nuestro hogar.
                                 <br />
                                 <br/>
                                 Así que decidimos mudar el casamiento a Mendoza!
                                 <br />
                                 <br/>
-                                Nos casamos en la bodega más linda que encontramos, que nos deja estar cerca de la naturaleza y bueno de los vinos.
+                                Nos casamos en la bodega más linda que encontramos, que nos deja estar cerca de la naturaleza y bueno, de los vinos.
                             </Typography>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={4}>
-                        <Box minHeight="200px" display="flex" alignItems="center" textAlign="center">
+                        <Box minHeight="400px" display="flex" alignItems="center" textAlign="center">
                             <img style={{margin: "0 auto"}} src={logoVistalba} height="120px" alt="logo vistalba"/>
                         </Box>
                     </Grid>
@@ -308,7 +315,7 @@ function Landing(props) {
                     <Grid item xs={12} md={4}>
                         <Box p={4} textAlign="center">
                             <Typography variant="h6">Alojamiento y hoteles</Typography>
-                            <Typography variant="body1">La idea es que <b>no manejes y te puedas relajar y disfrutar</b> del evento. Para esto habrán
+                            <Typography variant="body1">La idea es que <b>no manejes y te puedas relajar y disfrutar</b> del evento. Para esto habrá
                             transfers que te pasarán a buscar por el hotel en el que te hospedes. <br/> <br/>
                             Te dejamos una lista de los <b>hoteles que recomendamos por la zona</b> y cercanía a la bodega. 
                             <br/> <br/> 
@@ -361,7 +368,7 @@ function Landing(props) {
                     <Button variant="contained" className={classes.musicListButton} onClick={() => window.open("https://open.spotify.com/playlist/4rhHJHyq9jePeNmo318G2y?si=df3f59fc54974a31", "_blank")}><img src={spotifyLogo} height="20px" width="20px" alt="spotify logo" /> &nbsp; Ver Lista</Button>
                 </Box>
             </Box>
-            <Box className={classes.darkContainer}>
+            <Box className={classes.darkContainer} id={"activities"}>
                 <Box p={2} textAlign="center">
                     <Typography variant="h6" className={classes.activityTitle}>Actividades</Typography>
                     <Typography variant="subtitle1" mb={2}>Podés realizar actividades durante tu estadía en Mendoza! Para esto de dejamos algunas opciones y contactos para que puedas arreglar lo que más te guste!</Typography>
@@ -443,11 +450,13 @@ function Landing(props) {
                             </Box>
                         </Grid>
                         <Grid item xs={12} sm={12} md={4}>
-                            <Typography variant="body1"><b>Carolina Nunes</b></Typography>
-                            <Typography variant="body2">Alias: <b>carolinanunes</b></Typography>
-                            <Typography variant="body2">CBU: <b>1430001713002351010019</b></Typography>
-                            <Typography variant="body2">DNI: <b>35798506</b></Typography>
-                            <img src={logobrubank} alt="brubank logo" width="100px" />
+                            <Box p={2}>
+                                <Typography variant="body1"><b>Carolina Nunes</b></Typography>
+                                <Typography variant="body2">Alias: <b>carolinanunes</b></Typography>
+                                <Typography variant="body2">CBU: <b>1430001713002351010019</b></Typography>
+                                <Typography variant="body2">DNI: <b>35798506</b></Typography>
+                                <img src={logobrubank} alt="brubank logo" width="100px" />
+                            </Box>
                         </Grid>
                     </Grid>
                 </Box>
@@ -464,7 +473,7 @@ function Landing(props) {
                         </Grid>
                     </Grid>
                     <Box textAlign="right" pt={5} px={2}>
-                        <Typography variant="caption">built by Nico with ❤️</Typography>
+                        <Typography variant="caption">built with ❤️ by Nico</Typography>
                     </Box>
                 </Box>
             </Box>

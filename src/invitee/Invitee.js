@@ -68,23 +68,37 @@ function Invitee(props) {
 
     const handleNext = (isConfirm) => {
         // If user has companions to invite
+        if(activeInvitee.asists === "false") {
+            updateInvitee(activeInvitee)
+            return
+        }
+
         if(companionsAmount > 0){  
             
             // If it´s the last companion and clicked next then is a submit.
-            if(activeStep === companionsAmount || isConfirm) {
+            if(isConfirm) {
+                
                 // Submit - update user
-                const inviteeCopy = invitee
-                if(invitee.companions?.length >= activeStep) {
-                    inviteeCopy.companions[activeStep - 1] = activeInvitee
+                var inviteeCopy = invitee
+                
+                if(activeStep !== 0) {
+                    //Add companions to invitee
+
+                    if(invitee.companions?.length >= activeStep) {
+                        inviteeCopy.companions[activeStep - 1] = activeInvitee
+                    } else {
+                        
+                        if(!inviteeCopy.companions) {
+                            inviteeCopy.companions = []
+                        }
+                        //TODO: Validar que activeInvitee no tenga nombre vacio
+                        if(activeInvitee.name && activeInvitee.name.length > 0 && activeInvitee.email && activeInvitee.email.length > 0) {
+                            inviteeCopy.companions.push(activeInvitee)
+                        }
+                    }
                 } else {
-                    
-                    if(!inviteeCopy.companions) {
-                        inviteeCopy.companions = []
-                    }
-                    //TODO: Validar que activeInvitee no tenga nombre vacio
-                    if(activeInvitee.name && activeInvitee.name.length > 0 && activeInvitee.email && activeInvitee.email.length > 0) {
-                        inviteeCopy.companions.push(activeInvitee)
-                    }
+                    //Update user
+                    inviteeCopy = activeInvitee
                 }
                 
                 setInvitee(inviteeCopy)
@@ -96,23 +110,23 @@ function Invitee(props) {
                 //If it´s not a submit.
                 var companionIndex = activeStep 
                 
-                var inviteeCopy = invitee
+                var inviteeCopyNotConfirm = invitee
                 if (activeStep > 0) {
                     // Need to save the companion into invitee.companion array.
                     if (invitee.companions?.length >= companionIndex) {
                         // Then there´s a companion set and it´s needed to update the companion
-                        inviteeCopy.companions[activeStep - 1] = activeInvitee
+                        inviteeCopyNotConfirm.companions[activeStep - 1] = activeInvitee
                     } else {
                         
-                        if(inviteeCopy.companions === undefined) {
-                            inviteeCopy.companions = []
+                        if(inviteeCopyNotConfirm.companions === undefined) {
+                            inviteeCopyNotConfirm.companions = []
                         }
 
-                        inviteeCopy.companions.push(activeInvitee)
+                        inviteeCopyNotConfirm.companions.push(activeInvitee)
                     }
 
                 } else {
-                    inviteeCopy = activeInvitee
+                    inviteeCopyNotConfirm = activeInvitee
                 }
 
                 //If this companion is not yet loaded into array.
@@ -128,7 +142,7 @@ function Invitee(props) {
                     companion = invitee.companions[companionIndex]
                 }
 
-                setInvitee(inviteeCopy)
+                setInvitee(inviteeCopyNotConfirm)
                 setActiveInvitee(companion)
                 setActiveStep(activeStep + 1)
             }
@@ -149,7 +163,10 @@ function Invitee(props) {
                 inviteeCopy.companions = []
             }
 
-            inviteeCopy.companions[activeStep - 1] = activeInvitee
+            if(activeInvitee.name && activeInvitee.name.length > 0 && activeInvitee.email && activeInvitee.email.length > 0) {
+                inviteeCopy.companions[activeStep - 1] = activeInvitee
+            }
+
             setInvitee(inviteeCopy)
 
             if(activeStep === 1) {
@@ -166,9 +183,12 @@ function Invitee(props) {
     const updateInvitee = (inviteeParam) => {
         setLoading(true)
         set(ref(database, 'users/' + location.state?.inviteePath), inviteeParam).then(response => {
-            localStorage.setItem("invitee", JSON.stringify(inviteeParam))
-            localStorage.setItem("inviteePath", location.state?.inviteePath)
-            history.push("/?invitation=true")
+            if(inviteeParam.asists === "true") {
+                localStorage.setItem("invitee", JSON.stringify(inviteeParam))
+                localStorage.setItem("inviteePath", location.state?.inviteePath)
+            }
+
+            history.push(inviteeParam.asists === "true" ? "/?invitation=true" : "/")
         }).catch(e => {
             console.log(e)
         }).finally(() => {
@@ -299,6 +319,25 @@ function Invitee(props) {
                     {
                         (activeInvitee?.asists === true || activeInvitee?.asists === "true" || activeStep > 0) &&
                         <>
+                            <Box py={2}>
+                                <Typography variant="h6">Edad</Typography>
+                                <Typography variant="subtitle2">Si sos mayor y querés mentir un poquito, todo bien, pero menores de 18 porfa edad que tendrá a la fecha del evento 19/02 :)</Typography>
+                            </Box>
+                            <TextField 
+                                variant="filled"
+                                label="Edad"
+                                InputProps={{
+                                    className: classes.formItem,
+                                    disableUnderline: true
+                                }}
+                                onChange={handleChange}
+                                value={activeInvitee?.age ?? 0}
+                                name="age"
+                                size="small" 
+                                margin="normal" 
+                                required
+                                fullWidth
+                                placeholder="Edad"></TextField>
                             <Box py={2}>
                                 <Typography variant="h6">Tus fechas en mendoza</Typography>
                                 <Typography variant="subtitle2">No es necesario que las cargues ahora si aún no lo sabés, podés cargarlo luego! Pero si por favor recordá hacerlo ya que de esto dependen las transfers que pasarán por ustedes el día del evento.</Typography>

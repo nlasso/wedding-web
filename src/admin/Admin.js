@@ -185,9 +185,9 @@ function Admin() {
                                 <TableCell align="right">{row?.alergie ?? "TBD"}</TableCell>
                                 <TableCell align="right">{row?.alimentaryPreference ?? "no"}</TableCell>
                                 <TableCell align="right">{row?.patology ?? "no"}</TableCell>
-                                <TableCell align="right">{row?.handsCare === "true" ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />}</TableCell>
-                                <TableCell align="right">{row?.hairCare === "true" ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />}</TableCell>
-                                <TableCell align="right">{row?.makeup === "true" ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />}</TableCell>
+                                <TableCell align="right">{row?.handsCare === true ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />}</TableCell>
+                                <TableCell align="right">{row?.hairCare === true ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />}</TableCell>
+                                <TableCell align="right">{row?.makeup === true ? <CheckIcon style={{color: "green"}} /> : <CloseIcon style={{color: "red"}} />}</TableCell>
                                 
                             </TableRow>
                         ))}

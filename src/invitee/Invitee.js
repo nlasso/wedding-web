@@ -518,7 +518,7 @@ function Invitee(props) {
                                             className={classes.buttonContained}
                                             disabled={activeInvitee?.email === undefined || companionsAmount === 0 || activeStep >= companionsAmount }
                                             variant="contained"
-                                            onClick={() => handleNext(false)}>Siguiente</Button>
+                                            onClick={() => handleNext(false)}>+ Invitado/a</Button>
                                     </Box>
                                 }
                                 <Box alignSelf="right" >

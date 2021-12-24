@@ -232,7 +232,7 @@ function Landing(props) {
                     <Grid item xs={11} sm={8} md={4} lg={3}>
                         <Box textAlign="center" pt={2}>
                             <Typography variant="h6">Confirmá tu asistencia</Typography>
-                            <Typography variant="subtitle1">Ingresá tu dirección de mail a continuación. Tenés tiempo para confirmarnos hasta el <b>31 de Enero de 2021</b>!</Typography>
+                            <Typography variant="subtitle1">Ingresá tu dirección de mail a continuación. Tenés tiempo para confirmarnos hasta el <b>31 de Enero de 2022</b>!</Typography>
                         </Box>
                         <Box pb={4} pt={2}>
                             <form onSubmit={getUser}>

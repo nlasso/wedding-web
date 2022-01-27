@@ -147,6 +147,7 @@ function Admin() {
                                 <TableCell align="right">Edad</TableCell>
                                 <TableCell align="right">Teléfono</TableCell>
                                 <TableCell align="right">hotel</TableCell>
+                                <TableCell align="right">Dirección Hotel</TableCell>
                                 <TableCell align="right">Arribo</TableCell>
                                 <TableCell align="right">Salida</TableCell>
                                 <TableCell align="right">Alergias</TableCell>
@@ -175,8 +176,8 @@ function Admin() {
                                 </TableCell>
                                 <TableCell align="right">{row?.email}</TableCell>
                                 <TableCell align="right">{row?.companionOf !== undefined ? row?.companionOf : (row?.companionsAmount ?? 0)}</TableCell>
-                                <TableCell align="right">{row?.asists ? (row?.asists === "true" ? `SI ${<CheckIcon style={{color: "green"}} />}` : `NO ${<CloseIcon style={{color: "red"}} />}`) : "Falta contestar"}</TableCell>
-                                <TableCell align="right">{row?.preWedding ? `SI ${<CheckIcon style={{color: "green"}} />}` : `NO ${<CloseIcon style={{color: "red"}} />}`}</TableCell>
+                                <TableCell align="right">{row?.asists ? (row?.asists === "true" ? `SI ${(<CheckIcon style={{color: "green"}} />)}` : `NO ${(<CloseIcon style={{color: "red"}} />)}`) : "Falta contestar"}</TableCell>
+                                <TableCell align="right">{row?.preWedding ? `SI ${(<CheckIcon style={{color: "green"}} />)}` : `NO ${(<CloseIcon style={{color: "red"}} />)}`}</TableCell>
                                 <TableCell align="right">{row?.age}</TableCell>
                                 <TableCell align="right">{row?.cellphone}</TableCell>
                                 <TableCell align="right">{row?.hotel}</TableCell>
@@ -186,9 +187,9 @@ function Admin() {
                                 <TableCell align="right">{row?.alergie ?? "TBD"}</TableCell>
                                 <TableCell align="right">{row?.alimentaryPreference ?? "no"}</TableCell>
                                 <TableCell align="right">{row?.patology ?? "no"}</TableCell>
-                                <TableCell align="right">{row?.handsCare === true ? `SI ${<CheckIcon style={{color: "green"}} />}` : `NO ${<CloseIcon style={{color: "red"}} />}`}</TableCell>
-                                <TableCell align="right">{row?.hairCare === true ? `SI ${<CheckIcon style={{color: "green"}} />}` : `NO ${<CloseIcon style={{color: "red"}} />}`}</TableCell>
-                                <TableCell align="right">{row?.makeup === true ? `SI ${<CheckIcon style={{color: "green"}} />}` : `NO ${<CloseIcon style={{color: "red"}} />}`}</TableCell>
+                                <TableCell align="right">{row?.handsCare === true ? `SI ${(<CheckIcon style={{color: "green"}} />)}` : `NO ${(<CloseIcon style={{color: "red"}} />)}`}</TableCell>
+                                <TableCell align="right">{row?.hairCare === true ? `SI ${(<CheckIcon style={{color: "green"}} />)}` : `NO ${(<CloseIcon style={{color: "red"}} />)}`}</TableCell>
+                                <TableCell align="right">{row?.makeup === true ? `SI ${(<CheckIcon style={{color: "green"}} />)}` : `NO ${(<CloseIcon style={{color: "red"}} />)}`}</TableCell>
                                 
                             </TableRow>
                         ))}

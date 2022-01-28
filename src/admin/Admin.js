@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { Box, TextField, Typography, Table, TableContainer, TableBody, Paper, TableCell, TableHead, TableRow, Button, FormControlLabel, Checkbox, Grid } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { getDatabase, set, push, child, ref, get } from 'firebase/database'
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
 
 const useStyles = makeStyles({
     root: {
